@@ -1,11 +1,9 @@
-const express = require("express");
+import express from "express";
+import cors from "cors";
 const app = express();
-const axios = require("axios");
-const cors = require("cors");
-// importing routes
-const anime = require("./routes/anime");
 
-export const BASEURL = "https://api.consumet.org";
+// importring routes
+import anime from "./routes/anime.js";
 
 app.use(cors());
 app.use(express.json());
