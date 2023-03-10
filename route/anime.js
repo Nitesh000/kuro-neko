@@ -4,6 +4,7 @@ const router = express.Router();
 
 // get top anime list api
 router.get("/top-airing", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   const page = req.query.page || 1;
   try {
     const response = await fetchAnime.get("/top-airing", {
@@ -19,6 +20,7 @@ router.get("/top-airing", async (req, res) => {
 
 // search for anime
 router.get("/search/:animeName", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   const animeName = req.params.animeName;
   const query = req.query;
   query.page = query.page || 1;
@@ -34,6 +36,7 @@ router.get("/search/:animeName", async (req, res) => {
 
 // get recent episodes
 router.get("/recent-episodes", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   // type 1: Japanese Dub and English Sub
   // type 2: English Dub and no sub
   // type 3: Chinese Dub, English Sub
@@ -54,6 +57,7 @@ router.get("/recent-episodes", async (req, res) => {
 
 //get anime info
 router.get("/info/:animeName", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   const animeNmae = req.params.animeName;
   try {
     const response = await fetchAnime.get(`/info/${animeNmae}`);
@@ -65,6 +69,7 @@ router.get("/info/:animeName", async (req, res) => {
 
 //get anime episodes streaming links
 router.get("/watch/:episodeId", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   const episodeId = req.params.episodeId;
   const server = req.query.server || "vidstreaming";
   try {
@@ -81,6 +86,7 @@ router.get("/watch/:episodeId", async (req, res) => {
 
 // get anime episodes available servers
 router.get("/servers/:episodeId", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   const episodeId = req.params.episodeId;
   try {
     const response = await fetchAnime.get(`/servers/${episodeId}`);
