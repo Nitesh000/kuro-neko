@@ -13,7 +13,7 @@ router.get("/top-airing", async (req, res) => {
     // });
     const response = await fetch(
       `${baseURL}/top-airing?` +
-        URLSearchParams({
+        new URLSearchParams({
           page,
         })
     );
@@ -37,7 +37,7 @@ router.get("/search/:animeName", async (req, res) => {
     // res.json(response.data);
     const response = await fetch(
       `${baseURL}/${animeName}?` +
-        URLSearchParams({
+        new URLSearchParams({
           page: page,
         })
     );
@@ -65,7 +65,7 @@ router.get("/recent-episodes", async (req, res) => {
     // res.json(response.data);
     const response = await fetch(
       `${baseURL}/recent-episodes?` +
-        URLSearchParams({
+        new URLSearchParams({
           page,
           type,
         })
@@ -104,7 +104,7 @@ router.get("/watch/:episodeId", async (req, res) => {
     // res.json(response.data);
     const response = await fetch(
       `${baseURL}/watch/${episodeId}?` +
-        URLSearchParams({
+        new URLSearchParams({
           server: server,
         })
     );
