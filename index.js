@@ -5,7 +5,12 @@ const app = express();
 // importring routes
 import anime from "./route/anime.js";
 
-app.use(cors());
+const corsOptions = {
+  origin: "*",
+  credential: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
