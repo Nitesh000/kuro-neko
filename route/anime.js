@@ -11,12 +11,7 @@ router.get("/top-airing", async (req, res) => {
     //     page,
     //   },
     // });
-    const response = await fetch(
-      `${baseURL}/top-airing?` +
-        new URLSearchParams({
-          page,
-        })
-    );
+    const response = await fetch(`${baseURL}/top-airing?page=${page}`);
     const json = await response.json();
     // res.json(response.data);
     res.json(json);
@@ -35,12 +30,7 @@ router.get("/search/:animeName", async (req, res) => {
     //   params: { ...query },
     // });
     // res.json(response.data);
-    const response = await fetch(
-      `${baseURL}/${animeName}?` +
-        new URLSearchParams({
-          page: page,
-        })
-    );
+    const response = await fetch(`${baseURL}/${animeName}?page=${query.page}`);
     const json = await response.json();
     res.json(json);
   } catch (err) {
@@ -64,11 +54,7 @@ router.get("/recent-episodes", async (req, res) => {
     // });
     // res.json(response.data);
     const response = await fetch(
-      `${baseURL}/recent-episodes?` +
-        new URLSearchParams({
-          page,
-          type,
-        })
+      `${baseURL}/recent-episodes?page=${page}&type=${type}`
     );
     const json = await response.json();
     res.json(json);
@@ -103,10 +89,7 @@ router.get("/watch/:episodeId", async (req, res) => {
     // });
     // res.json(response.data);
     const response = await fetch(
-      `${baseURL}/watch/${episodeId}?` +
-        new URLSearchParams({
-          server: server,
-        })
+      `${baseURL}/watch/${episodeId}?server=${server}`
     );
     const json = await response.json();
     res.json(json);
