@@ -37,7 +37,7 @@
 
 ##### Get Recent Episodes
 
-- For getting the recents episodes send request to the `${your_URL}/recent-episodes`.
+- For getting the recents episodes send request to the `${your_URL}/anime/recent-episodes`.
 - Here are the two queries
   - The `page` query: Which just the result page number is asking.
   - The `type` query:
@@ -65,7 +65,7 @@
 
 ##### Get Top Airing Anime
 
-- For getting the top airing anime send request to the `${your_URL}/top-airing`.
+- For getting the top airing anime send request to the `${your_URL}/anime/top-airing`.
 - Here we have only one param, the `page`, which is default to `1`.
 - The result json is gonna look like this
 
@@ -87,7 +87,7 @@
 
 ##### Get Anime Info
 
-- For getting the anime info send request to the `${your_URL}/info/${anime name}`.
+- For getting the anime info send request to the `${your_URL}/anime/info/${anime name}`.
 - here we have no params. You don't have to worry about it.
 - The result json is gonna look like this
 
@@ -117,7 +117,7 @@
 
 ##### Get Anime Episode Streaming Links
 
-- For getting episodes streaming likes send request to the `${your_URL}/watch/${episode id}`.
+- For getting episodes streaming likes send request to the `${your_URL}/anime/watch/${episode id}`.
 - Here we have a param, `server`, by default the server is gonna be `vidstreaming`.
   - we have other two alternatives `gogocdn` and `streamsb`.
 - The result json is gonna look like this
@@ -141,7 +141,7 @@
 
 ##### Get Anime Episode Available Servers
 
-- For getting anime episode available servers send request to the `${your_URL}/servers/${episodeId}`.
+- For getting anime episode available servers send request to the `${your_URL}/anime/servers/${episodeId}`.
 - Here we have no params, So no worry. :)
 - The reuslt json is gonna look like this
 
@@ -156,5 +156,5 @@
 
 ---
 
-- This whole api is focused on the gogoanime api links. And create with reference to the Consumet.org(https://docs.consumet.org).
+- This whole api is focused on the gogoanime api links. And create with reference to the [Consumet.org](https://docs.consumet.org).
 - This is just for a fun purpose, no hard feeling.
