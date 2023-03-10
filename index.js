@@ -3,7 +3,7 @@ import cors from "cors";
 const app = express();
 
 // importring routes
-import anime from "./routes/anime.js";
+import anime from "./anime.js";
 
 app.use(
   cors({
