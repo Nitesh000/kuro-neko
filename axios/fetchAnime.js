@@ -7,4 +7,6 @@ const fetchAnime = axios.create({
   },
 });
 
+export const baseURL = "https://api.consumet.org/anime/gogoanime";
+
 export default fetchAnime;

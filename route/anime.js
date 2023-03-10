@@ -1,17 +1,25 @@
 import express from "express";
-import fetchAnime from "../axios/fetchAnime.js";
+import fetchAnime, { baseURL } from "../axios/fetchAnime.js";
 const router = express.Router();
 
 // get top anime list api
 router.get("/top-airing", async (req, res) => {
   const page = req.query.page || 1;
   try {
-    const response = await fetchAnime.get("/top-airing", {
-      params: {
-        page,
-      },
-    });
-    res.json(response.data);
+    // const response = await fetchAnime.get("/top-airing", {
+    //   params: {
+    //     page,
+    //   },
+    // });
+    const response = await fetch(
+      `${baseURL}/top-airing?` +
+        URLSearchParams({
+          page,
+        })
+    );
+    const json = await response.json();
+    // res.json(response.data);
+    res.json(json);
   } catch (err) {
     res.json(err);
   }
@@ -23,10 +31,18 @@ router.get("/search/:animeName", async (req, res) => {
   const query = req.query;
   query.page = query.page || 1;
   try {
-    const response = await fetchAnime.get(`/${animeName}`, {
-      params: { ...query },
-    });
-    res.json(response.data);
+    // const response = await fetchAnime.get(`/${animeName}`, {
+    //   params: { ...query },
+    // });
+    // res.json(response.data);
+    const response = await fetch(
+      `${baseURL}/${animeName}?` +
+        URLSearchParams({
+          page: page,
+        })
+    );
+    const json = await response.json();
+    res.json(json);
   } catch (err) {
     res.json(err);
   }
@@ -40,13 +56,22 @@ router.get("/recent-episodes", async (req, res) => {
   const page = req.query.page || 1;
   const type = req.query.type || 1;
   try {
-    const response = await fetchAnime.get("/recent-episodes", {
-      params: {
-        page,
-        type,
-      },
-    });
-    res.json(response.data);
+    // const response = await fetchAnime.get("/recent-episodes", {
+    //   params: {
+    //     page,
+    //     type,
+    //   },
+    // });
+    // res.json(response.data);
+    const response = await fetch(
+      `${baseURL}/recent-episodes?` +
+        URLSearchParams({
+          page,
+          type,
+        })
+    );
+    const json = await response.json();
+    res.json(json);
   } catch (err) {
     res.json(err);
   }
@@ -56,8 +81,11 @@ router.get("/recent-episodes", async (req, res) => {
 router.get("/info/:animeName", async (req, res) => {
   const animeNmae = req.params.animeName;
   try {
-    const response = await fetchAnime.get(`/info/${animeNmae}`);
-    res.json(response.data);
+    // const response = await fetchAnime.get(`/info/${animeNmae}`);
+    // res.json(response.data);
+    const response = await fetch(`${baseURL}/info/${animeNmae}`);
+    const json = await response.json();
+    res.json(json);
   } catch (err) {
     res.json(err);
   }
@@ -68,12 +96,20 @@ router.get("/watch/:episodeId", async (req, res) => {
   const episodeId = req.params.episodeId;
   const server = req.query.server || "vidstreaming";
   try {
-    const response = await fetchAnime.get(`/watch/${episodeId}`, {
-      params: {
-        server,
-      },
-    });
-    res.json(response.data);
+    // const response = await fetchAnime.get(`/watch/${episodeId}`, {
+    //   params: {
+    //     server,
+    //   },
+    // });
+    // res.json(response.data);
+    const response = await fetch(
+      `${baseURL}/watch/${episodeId}?` +
+        URLSearchParams({
+          server: server,
+        })
+    );
+    const json = await response.json();
+    res.json(json);
   } catch (err) {
     res.json(err);
   }
@@ -83,8 +119,11 @@ router.get("/watch/:episodeId", async (req, res) => {
 router.get("/servers/:episodeId", async (req, res) => {
   const episodeId = req.params.episodeId;
   try {
-    const response = await fetchAnime.get(`/servers/${episodeId}`);
-    res.json(response.data);
+    // const response = await fetchAnime.get(`/servers/${episodeId}`);
+    // res.json(response.data);
+    const response = await fetch(`${baseURL}/servers/${episodeId}`);
+    const json = await response.json();
+    res.json(json);
   } catch (err) {
     res.json(err);
   }
