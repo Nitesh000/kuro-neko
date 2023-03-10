@@ -1,5 +1,5 @@
 import express from "express";
-import fetchAnime from "./fetchAnime.js";
+import fetchAnime from "../axios/fetchAnime.js";
 const router = express.Router();
 
 // get top anime list api
