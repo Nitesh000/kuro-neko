@@ -78,8 +78,9 @@ router.get("/info/:animeName", async (req, res) => {
 });
 
 //get anime episodes streaming links
-router.get("/watch/:episodeId", async (req, res) => {
+router.get("/:animeName/:episodeId", async (req, res) => {
   const episodeId = req.params.episodeId;
+  const episodeList = req.params.animeName;
   const server = req.query.server || "vidstreaming";
   try {
     // const response = await fetchAnime.get(`/watch/${episodeId}`, {
@@ -88,11 +89,15 @@ router.get("/watch/:episodeId", async (req, res) => {
     //   },
     // });
     // res.json(response.data);
-    const response = await fetch(
+    const streamingLinkResponse = await fetch(
       `${baseURL}/watch/${episodeId}?server=${server}`
     );
-    const json = await response.json();
-    res.json(json);
+    const streamJson = await streamingLinkResponse.json();
+    const episodeListResponse = await fetch(`${baseURL}/info/${episodeList}`);
+
+    const episodeJson = await episodeListResponse.json();
+    streamJson.episodeList = episodeJson.episodes;
+    res.json(streamJson);
   } catch (err) {
     res.json(err);
   }

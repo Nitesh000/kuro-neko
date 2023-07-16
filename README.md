@@ -117,7 +117,7 @@
 
 ##### Get Anime Episode Streaming Links
 
-- For getting episodes streaming likes send request to the `${your_URL}/anime/watch/${episode id}`.
+- For getting episodes streaming likes send request to the `${your_URL}/anime/${anime id}/${episode id}`.
 - Here we have a param, `server`, by default the server is gonna be `vidstreaming`.
   - we have other two alternatives `gogocdn` and `streamsb`.
 - The result json is gonna look like this
@@ -134,6 +134,14 @@
       "url": "string",
       "quality": "string",
       "isM3U8": true
+    }
+  ],
+  "download": "string",
+  "episodes": [
+    {
+      "id": "string",
+      "number": 0,
+      "url": "string"
     }
   ]
 }
